@@ -1,0 +1,58 @@
+# version: "3.9"
+
+# services:
+#   client:
+#     build: ./client
+#     ports:
+#       - "8080:8080"
+
+#   server:
+#     build: ./server
+#     ports:
+#       - "3000:3000"
+#     environment:
+#       - PORT=3000
+#     depends_on:
+#       - redis
+
+#   redis:
+#     image: "redis:alpine"
+
+
+version: "3.9"
+services:
+  redis:
+    image: "redis:alpine"
+    networks:
+      - loadbalance_net
+  backend-1:
+    build: ./server
+    networks:
+      - loadbalance_net
+  backend-2:
+    build: ./server
+    networks:
+      - loadbalance_net
+  backend-3:
+    build: ./server
+    networks:
+      - loadbalance_net
+  client:
+    build: ./client
+    ports:
+      - "8080:8080"
+    networks:
+      - loadbalance_net
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    networks:
+      - loadbalance_net
+    depends_on:
+      - backend-1
+      - backend-2
+      - backend-3
+networks:
+  loadbalance_net:
