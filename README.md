@@ -156,7 +156,7 @@ If we try to send data to my friend, say I’m in localhost:8000, and friend is 
 
 
 
-Github repo:   https://github.com/akilesh1706/WebSocket
+Github repo:   https://github.com/sanjaymajji/chat_app
 
 
 IN BRIEF
