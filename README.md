@@ -1,5 +1,5 @@
 
-<h1>Chat App</h1>
+<h1>Chat X</h1>
 
 A real-time chat application built using **Socket.IO**, facilitating seamless communication in shared environments and private chat rooms. Designed for scalability, performance, and reliability with modern tools like Docker, NGINX, and Redis.
 
