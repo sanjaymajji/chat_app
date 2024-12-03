@@ -6,19 +6,12 @@ A real-time chat application built using **Socket.IO**, facilitating seamless co
 
 ---
 
-**Features**
+## **Features**
 - Real-time communication using **Socket.IO**.
 - Support for shared chat environments and private chat rooms.
 - Scalable architecture with **horizontal scaling**.
 - Load balancing via **NGINX**, ensuring traffic distribution and fault tolerance.
 - Caching and session management with **Redis** for efficient performance.
-
----
-
-## **Scalability Highlights**
-- **Horizontal Scaling**: Multiple servers handle increased load, avoiding single points of failure.
-- **Load Balancing**: Implemented via NGINX with support for sticky sessions and `ip_hash` for consistent user-server mapping.
-- **Redis Integration**: Centralized caching and session sharing across servers for seamless communication.
 
 ---
 
@@ -35,18 +28,58 @@ A real-time chat application built using **Socket.IO**, facilitating seamless co
 ### Prerequisites
 - Docker installed ([Download Docker](https://www.docker.com/)).
 - Node.js installed ([Download Node.js](https://nodejs.org/)).
+- Redis installed (see instructions below).
 
 ### Steps
 1. Clone the repository:
-   ```ruby
+   ```bash
    git clone https://github.com/sanjaymajji/chat_app.git
    cd chat_app
    ```
 2. Build and run the Docker container:
-   ```ruby
+   ```bash
    docker-compose up --build
    ```
 3. Access the application at `http://localhost:3000`.
+
+---
+
+## **Redis Installation**
+
+### **For Windows**
+1. Download Redis for Windows from the GitHub repository:
+   [tporadowski/redis/releases](https://github.com/tporadowski/redis/releases).
+2. Extract the files to a folder (e.g., `C:\Redis`).
+3. Add the Redis folder to your system's PATH environment variable:
+   - Open **Control Panel > System > Advanced System Settings > Environment Variables**.
+   - Under **System Variables**, find and edit the `Path` variable.
+   - Add the path to your Redis folder (e.g., `C:\Redis`).
+4. Open Command Prompt and test the installation:
+   ```bash
+   redis-server
+   redis-cli
+   ```
+   You should see the Redis CLI prompt if installed correctly.
+
+### **For Linux**
+1. Update your package list and install Redis:
+   ```bash
+   sudo apt update
+   sudo apt install redis-server
+   ```
+2. Start the Redis server:
+   ```bash
+   sudo systemctl start redis
+   ```
+3. Enable Redis to start on boot:
+   ```bash
+   sudo systemctl enable redis
+   ```
+4. Test the installation:
+   ```bash
+   redis-cli ping
+   ```
+   You should see `PONG` if Redis is running correctly.
 
 ---
 
@@ -77,4 +110,3 @@ A real-time chat application built using **Socket.IO**, facilitating seamless co
 - Implement analytics for chat activity monitoring.
 - Optimize Redis for real-time event tracking.
 
----
